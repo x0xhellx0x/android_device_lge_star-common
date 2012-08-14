@@ -75,7 +75,7 @@ PRODUCT_PACKAGES += \
     screencap \
     hwprops \
     audio.a2dp.default \
-    camera.tegra \
+    libcamera \
     hwcomposer.default \
     com.android.future.usb.accessory
 
