@@ -82,7 +82,7 @@ write_int(char const* path, int value)
         return amt == -1 ? -errno : 0;
     } else {
         if (already_warned == 0) {
-            LOGE("write_int failed to open %s\n", path);
+            ALOGE("write_int failed to open %s\n", path);
             already_warned = 1;
         }
         return -errno;
@@ -127,7 +127,7 @@ set_light_buttons(struct light_device_t* dev,
     int on = is_lit(state);
     long value = rgb_to_brightness(state);
 
-    LOGV("Setting button brightness to %ld",value);
+    ALOGV("Setting button brightness to %ld",value);
 
     pthread_mutex_lock(&g_lock);
     err = write_int(BUTTON_BRIGHTNESS, (int)value);
@@ -145,7 +145,7 @@ set_light_backlight(struct light_device_t* dev,
     int err = 0;
     int brightness = rgb_to_brightness(state);
     int alc_is_on = 0;
-    LOGV("Setting display brightness to %d",brightness);
+    ALOGV("Setting display brightness to %d",brightness);
 
     pthread_mutex_lock(&g_lock);
     err = write_int(LCD_FILE, (brightness));
@@ -167,7 +167,7 @@ set_light_notifications(struct light_device_t* dev,
     green = (state->color >> 8) & 0xff;
     blue = (state->color) & 0xff;
 
-    LOGV("Calling notification light with state %d",on);
+    ALOGV("Calling notification light with state %d",on);
     pthread_mutex_lock(&g_lock);
     if (!on) {
         err = write_int(BUTTON_PULSE, 0);
@@ -194,7 +194,7 @@ set_light_attention(struct light_device_t* dev,
 {
     int err = 0;
     int on = is_lit(state);
-    LOGV("Calling attention light with state %d",on);
+    ALOGV("Calling attention light with state %d",on);
     pthread_mutex_lock(&g_lock);
     err = write_int(BUTTON_PULSE, on ? 1000 : 0);
     pthread_mutex_unlock(&g_lock);
