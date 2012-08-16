@@ -19,7 +19,7 @@
 #define LOG_TAG "lights"
 
 #include <cutils/log.h>
-
+#include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include <unistd.h>
@@ -264,7 +264,7 @@ static struct hw_module_methods_t lights_module_methods = {
 /*
  * The lights Module
  */
-const struct hw_module_t HAL_MODULE_INFO_SYM = {
+struct hw_module_t HAL_MODULE_INFO_SYM = {
     .tag = HARDWARE_MODULE_TAG,
     .version_major = 1,
     .version_minor = 0,
@@ -273,3 +273,4 @@ const struct hw_module_t HAL_MODULE_INFO_SYM = {
     .author = "CyanogenMod Project",
     .methods = &lights_module_methods,
 };
+
