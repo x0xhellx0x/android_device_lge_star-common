@@ -3,6 +3,9 @@ COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DREVERSE_FFC_MIRROR_LOGIC -DMISSING_EGL
 # inherit from the proprietary version
 -include vendor/lge/star-common/BoardConfigVendor.mk
 
+USE_CAMERA_STUB := true
+BOARD_USES_GENERIC_AUDIO := false
+
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := tegra
 TARGET_CPU_ABI := armeabi-v7a
@@ -19,7 +22,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/lge/star-common/include
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-BOARD_USES_AUDIO_LEGACY := false
+BOARD_USES_AUDIO_LEGACY := true
 #BOARD_USES_CAMERA_LEGACY := true
 
 BOARD_HAVE_BLUETOOTH := true
