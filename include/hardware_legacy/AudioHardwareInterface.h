@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2007 The Android Open Source Project
+ * Copyright (c) 2012, Code Aurora Forum. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +57,7 @@ public:
     virtual size_t      bufferSize() const = 0;
 
     /**
-     * returns the output channel nask
+     * returns the output channel mask
      */
     virtual uint32_t    channels() const = 0;
 
@@ -109,6 +110,15 @@ public:
     // return the number of audio frames written by the audio dsp to DAC since
     // the output has exited standby
     virtual status_t    getRenderPosition(uint32_t *dspFrames) = 0;
+
+    /**
+     * get the local time at which the next write to the audio driver will be
+     * presented
+     */
+#ifndef ICS_AUDIO_BLOB
+    virtual status_t    getNextWriteTimestamp(int64_t *timestamp);
+#endif
+
 };
 
 /**
@@ -166,7 +176,7 @@ public:
     virtual String8     getParameters(const String8& keys) = 0;
 
 
-    // Return the amount of input frames lost in the audio driver since the last call of this function.
+    // Return the number of input frames lost in the audio driver since the last call of this function.
     // Audio driver is expected to reset the value to 0 and restart counting upon returning the current value by this function call.
     // Such loss typically occurs when the user space process is blocked longer than the capacity of audio driver buffers.
     // Unit: the number of input audio frames
@@ -205,12 +215,25 @@ public:
     virtual status_t    setSpeakerBoostModeOn(bool mode) = 0;
     virtual status_t    setLGMicModeOn(bool mode) = 0;
 
+#ifdef QCOM_FM_ENABLED
+    /** set the fm volume. Range is between 0.0 and 1.0 */
+    virtual status_t    setFmVolume(float volume) { return 0; }
+#endif
+
     /**
      * set the audio volume for all audio activities other than voice call.
      * Range between 0.0 and 1.0. If any value other than NO_ERROR is returned,
      * the software mixer will emulate this capability.
      */
     virtual status_t    setMasterVolume(float volume) = 0;
+
+    /**
+     * Get the current master volume value for the HAL, if the HAL supports
+     * master volume control.  AudioFlinger will query this value from the
+     * primary audio HAL when the service starts and use the value for setting
+     * the initial master volume across all HALs.
+     */
+    virtual status_t    getMasterVolume(float *volume) = 0;
 
     /**
      * setMode is called when the audio mode changes. NORMAL mode is for
@@ -245,6 +268,7 @@ public:
                                 uint32_t *sampleRate=0,
                                 status_t *status=0) = 0;
     virtual    void        closeOutputStream(AudioStreamOut* out) = 0;
+
     /** This method creates and opens the audio hardware input stream */
     virtual AudioStreamIn* openInputStream(
                                 uint32_t devices,

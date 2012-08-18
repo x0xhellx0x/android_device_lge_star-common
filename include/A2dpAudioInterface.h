@@ -40,8 +40,8 @@ public:
     virtual status_t    setVoiceVolume(float volume);
     virtual status_t    setMasterVolume(float volume);
 
-    status_t    setSpeakerBoostModeOn(bool mode) { return 0; };
-    status_t    setLGMicModeOn(bool mode) { return 0; };
+	status_t    setSpeakerBoostModeOn(bool mode) { return 0; };
+	status_t    setLGMicModeOn(bool mode) { return 0; };
 
     virtual status_t    setMode(int mode);
 
