@@ -68,6 +68,7 @@ PRODUCT_LOCALES += hdpi
 ## LGE stuffs
 PRODUCT_PACKAGES += \
     LGEServices \
+    Torch \
     bridgeutil \
     libbridges \
     libbridge \
