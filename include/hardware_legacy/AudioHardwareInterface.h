@@ -227,6 +227,7 @@ public:
      */
     virtual status_t    setMasterVolume(float volume) = 0;
 
+#ifndef USES_AUDIO_LEGACY
     /**
      * Get the current master volume value for the HAL, if the HAL supports
      * master volume control.  AudioFlinger will query this value from the
@@ -234,6 +235,7 @@ public:
      * the initial master volume across all HALs.
      */
     virtual status_t    getMasterVolume(float *volume) = 0;
+#endif
 
     /**
      * setMode is called when the audio mode changes. NORMAL mode is for
@@ -246,7 +248,6 @@ public:
     virtual status_t    getVoIPCallState(bool *state) = 0;
     virtual status_t    setForceRoutingMode(int mode) = 0;
     virtual status_t    getForceRoutingMode(int *mode) = 0;
-
 
     // mic mute
     virtual status_t    setMicMute(bool state) = 0;

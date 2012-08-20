@@ -38,10 +38,12 @@ public:
     virtual status_t    initCheck();
 
     virtual status_t    setVoiceVolume(float volume);
+#ifndef USES_AUDIO_LEGACY
     virtual status_t    setMasterVolume(float volume);
+#endif
 
-	status_t    setSpeakerBoostModeOn(bool mode) { return 0; };
-	status_t    setLGMicModeOn(bool mode) { return 0; };
+    status_t    setSpeakerBoostModeOn(bool mode) { return 0; };
+    status_t    setLGMicModeOn(bool mode) { return 0; };
 
     virtual status_t    setMode(int mode);
 
