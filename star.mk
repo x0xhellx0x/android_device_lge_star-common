@@ -30,6 +30,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/usb_keyboard_102_en_us.kl:system/usr/keylayout/usb_keyboard_102_en_us.kl \
     $(LOCAL_PATH)/prebuilt/usb_keyboard_102_en_us.kcm.bin:system/usr/keychars/usb_keyboard_102_en_us.kcm.bin
 
+# Proprietary wvm
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/drm/libWVStreamControlAPI_L1.so:system/lib/libWVStreamControlAPI_L1.so \
+    $(LOCAL_PATH)/drm/libwvm.so:system/lib/libwvm.so \
+    $(LOCAL_PATH)/drm/libwvdrm_L1.so:system/lib/libwvdrm_L1.so \
+    $(LOCAL_PATH)/drm/libdrmwvmplugin.so:system/lib/drm/libdrmwvmplugin.so \
+
 # Permission files
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
