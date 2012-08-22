@@ -1,0 +1,3 @@
+[submodule "HwaSettings"]
+	path = HwaSettings
+	url = git://github.com/tpruvot/HwaSettings.git
