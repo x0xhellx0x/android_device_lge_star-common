@@ -84,6 +84,7 @@ PRODUCT_PACKAGES += \
     libsecureclock \
     screencap \
     hwprops \
+    HwaSettings \
     audio.a2dp.default \
     camera.tegra \
     hwcomposer.default \
