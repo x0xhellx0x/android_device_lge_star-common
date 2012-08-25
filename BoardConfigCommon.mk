@@ -3,6 +3,8 @@ COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DREVERSE_FFC_MIRROR_LOGIC -DMISSING_EGL
 # inherit from the proprietary version
 -include vendor/lge/star-common/BoardConfigVendor.mk
 
+NEEDS_UCNV_EX_44_WRAPPER := true
+
 USE_CAMERA_STUB := true
 BOARD_USES_GENERIC_AUDIO := false
 
