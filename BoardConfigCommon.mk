@@ -25,8 +25,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/lge/star-common/include
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# audioflinger and libhardware_legacy need ICS_AUDIO_BLOB for non-JB audio driver
-COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 BOARD_USES_AUDIO_LEGACY := true
 #BOARD_USES_CAMERA_LEGACY := true
 
