@@ -7,6 +7,7 @@
 //
 
 #define PROPERTY_PERMS
+#define CONTROL_PERMS
 
 struct {
     const char *prefix;
@@ -54,8 +55,6 @@ struct {
     { "net.pdp",          AID_RADIO,    AID_RADIO },
     { NULL, 0, 0 }
 };
-
-#define CONTROL_PERMS
 
 struct {
     const char *service;
