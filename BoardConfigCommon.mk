@@ -19,7 +19,7 @@ TARGET_ARCH_VARIANT_FPU := vfpv3-d16
 TARGET_HAVE_TEGRA_ERRATA_657451 := true
 TARGET_NO_HW_VSYNC := true
 
-TARGET_SPECIFIC_HEADER_PATH := device/lge/star-common/include
+#TARGET_SPECIFIC_HEADER_PATH := device/lge/star-common/include
 
 #TARGET_USERIMAGES_USE_EXT4 := true
 
