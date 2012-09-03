@@ -46,6 +46,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
+# drm files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/drm/libdrmwvmplugin.so:system/lib/drm/libdrmwvmplugin.so \
+    $(LOCAL_PATH)/drm/libwvdrm_L3.so:system/lib/libwvdrm_L3.so \
+    $(LOCAL_PATH)/drm/libwvm.so:system/lib/libwvm.so \
+    $(LOCAL_PATH)/drm/libWVStreamControlAPI_L3.so:system/lib/libWVStreamControlAPI_L3.so 
 
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.opengles.version=131072 \
