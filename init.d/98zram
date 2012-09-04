@@ -1,0 +1,27 @@
+#!/system/bin/sh
+
+mem_total_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+# 1 / 3 of total ram should be enough
+mem_total=$(((mem_total_kb * 1024) / 3))
+
+cpu_cores=$(find /sys/devices/system/cpu/ -name "cpu[0-9]" | wc -l)
+decre_cpu_cores=$((cpu_cores - 1))
+
+modprobe zram num_devices=$cpu_cores
+
+echo 60 > /proc/sys/vm/swappiness
+
+# set the disksize
+for i in $(seq 0 $decre_cpu_cores); do
+echo $((mem_total / cpu_cores)) > /sys/block/zram$i/disksize
+done
+
+# create the block
+for i in $(seq 0 $decre_cpu_cores); do
+mkswap /dev/block/zram$i
+done
+
+# enable it
+for i in $(seq 0 $decre_cpu_cores); do
+swapon /dev/block/zram$i
+done

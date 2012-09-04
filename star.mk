@@ -53,6 +53,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/drm/libwvm.so:system/lib/libwvm.so \
     $(LOCAL_PATH)/drm/libWVStreamControlAPI_L3.so:system/lib/libWVStreamControlAPI_L3.so 
 
+# init.d files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.d/98zram:system/etc/init.d/98zram \
+    $(LOCAL_PATH)/init.d/99tune:system/etc/init.d/99tune
+
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.opengles.version=131072 \
         ro.telephony.call_ring.multiple=false \

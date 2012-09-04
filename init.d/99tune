@@ -1,0 +1,5 @@
+#!/system/bin/sh
+echo 70 > /proc/sys/vm/dirty_ratio
+echo 20000 > /proc/sys/vm/dirty_writeback_centisecs
+echo 20000 > /proc/sys/vm/dirty_expire_centisecs
+echo 50 > /proc/sys/vm/dirty_background_ratio
